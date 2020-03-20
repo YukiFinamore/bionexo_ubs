@@ -1,0 +1,67 @@
+@import "../../styles/common/_base.scss";
+
+.navbar {
+  padding: 0;
+  background: $turquoise;
+}
+
+/* Position and sizing of burger button */
+.bm {
+  &-burger {
+    &-button {
+      position: relative;
+      width: 36px;
+      height: 30px;
+      left: 36px;
+      top: 1px;
+    }
+
+    &-bars {
+      background: $white;
+      height: 12% !important;
+
+      &-hover {
+        background: #a90000;
+      }
+    }
+  }
+
+  &-cross {
+    background: #bdc3c7;
+
+    &-button {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+
+    &-wrap {
+      position: fixed;
+      height: 100%;
+      top: 0;
+    }
+  }
+
+  &-morph-shape {
+    fill: #373a47;
+  }
+
+  &-item {
+    display: inline-block;
+
+    &-list {
+      color: #b8b7ad;
+      padding: 0.8em;
+    }
+  }
+
+  &-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+  }
+}
