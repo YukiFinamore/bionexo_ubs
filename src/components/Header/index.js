@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Dropdown, DropdownMenu, DropdownItem } from 'reactstrap';
-import { slide as Menu } from 'react-burger-menu'
+import { Dropdown } from 'react-bootstrap';
+import { slide as AsideMenu } from 'react-burger-menu';
+import Truncate from 'react-truncate';
+import { FaUserAlt } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.scss";
 
@@ -12,33 +14,50 @@ class Header extends Component {
   render() {
     return (
       <header className="app-header navbar">
-        <Menu>
-          <a id="home" className="menu-item" href="/">Home</a>
-          <a id="about" className="menu-item" href="/about">About</a>
-          <a id="contact" className="menu-item" href="/contact">Contact</a>
+        <div className="header-item">
+          <AsideMenu>
+            <a id="home" className="menu-item" href="/">Home</a>
+            <a id="about" className="menu-item" href="/about">About</a>
+            <a id="contact" className="menu-item" href="/contact">Contact</a>
 
-          <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
-        </Menu>
+            <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+          </AsideMenu>
+        </div>
 
-        <ul className="nav navbar-nav ml-auto">
-          <li className="nav-item">
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <a onClick={this.toggle} className="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded={this.state.dropdownOpen}>
-                Teste
-              </a>
+        <div className="logo-box header-item">
+          <img src="img/bionexo-logo.png" alt="Logo" />
+        </div>
 
-              <DropdownMenu className="dropdown-menu-right">
-                <DropdownItem header className="text-center">
-                  <strong>Conta</strong>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </li>
+        <div className="user-area-container header-item">
+          <Dropdown>
+            <Dropdown.Toggle id="dropdown-basic">
+              <div className="user-info-box">
+                <Truncate lines={1} ellipsis={<span>...</span>}>
+                  Empresa com o nome fantasia muito grande mesmo.
+                </Truncate>
 
-          <li className="nav-item hidden-md-down">
-            Oi
-          </li>
-        </ul>
+                <p> 79.424.862/0001-00 </p>
+              </div>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/profile">Perfil</Dropdown.Item>
+              <Dropdown.Item href="#/settings">Configurações</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown>
+            <Dropdown.Toggle id="dropdown-basic">
+              <div className="icon-box">
+                <FaUserAlt/>
+              </div>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/sign-out">Sair</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
       </header>
     )
   }

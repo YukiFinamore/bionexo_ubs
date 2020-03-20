@@ -24,8 +24,7 @@ class Home extends Component {
               <div className="card card-inverse card-primary py-3 hidden-md-down" style={{ width: 44 + '%' }}>
                 <div className="card-block text-center">
                   <div>
-                    <h2>Cadastro</h2>
-                    <p>Para realizar um cadastro entre em contato com a MCR.</p>
+                    
                   </div>
                 </div>
               </div>

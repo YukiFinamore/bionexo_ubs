@@ -1,8 +1,26 @@
 @import "../../styles/common/_base.scss";
 
+/* Navbar/Header */
 .navbar {
-  padding: 0;
+  padding: 20px 0;
   background: $turquoise;
+}
+
+.header-item {
+  display: flex;
+  width: 30%;
+
+  &:last-of-type {
+    justify-content: flex-end;
+  }
+}
+
+.logo-box {
+  justify-content: center;
+
+  img {
+    width: 150px;
+  }
 }
 
 /* Position and sizing of burger button */
@@ -12,7 +30,7 @@
       position: relative;
       width: 36px;
       height: 30px;
-      left: 36px;
+      left: 50px;
       top: 1px;
     }
 
@@ -21,7 +39,7 @@
       height: 12% !important;
 
       &-hover {
-        background: #a90000;
+        background: $navy-turquoise;
       }
     }
   }
@@ -36,7 +54,7 @@
   }
 
   &-menu {
-    background: #373a47;
+    background: $navy-turquoise;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
 
@@ -57,11 +75,91 @@
     &-list {
       color: #b8b7ad;
       padding: 0.8em;
+
+      a {
+        color: $white;
+        margin-bottom: 20px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
   }
 
   &-overlay {
     background: rgba(0, 0, 0, 0.3);
     top: 0;
+  }
+}
+
+/* User Infos */
+.user-area-container {
+  display: flex;
+}
+
+.dropdown {
+  &:last-of-type {
+    margin: 0 50px 0 30px;
+    padding-left: 40px;
+    border-left: solid 1px $white;
+
+    button {
+      font-size: 30px;
+      padding: 0;
+
+      &:after {
+        display: none;
+      }
+
+      .icon-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
+        border-radius: 50px;
+        width: 60px;
+        height: 60px;
+
+        svg {
+          color: $navy-turquoise;
+        }
+      }
+    }
+  }
+
+  button {
+    background: transparent !important;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+
+    &:after {
+      margin: 10px 0 0 10px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+    }
+
+    span {
+      width: 200px;
+    }
+
+    p {
+      color: $navy-turquoise;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+
+  .user-info-box {
+    width: 100%;
   }
 }
