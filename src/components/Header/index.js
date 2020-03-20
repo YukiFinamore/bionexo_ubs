@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { slide as AsideMenu } from 'react-burger-menu';
 import Truncate from 'react-truncate';
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaSearch } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.scss";
 
@@ -22,6 +22,22 @@ class Header extends Component {
 
             <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
           </AsideMenu>
+
+          <div className="search-box">
+            <InputGroup>
+              <FormControl
+                placeholder="Busca"
+                aria-label="Busca"
+                aria-describedby="basic-addon2"
+              />
+
+              <InputGroup.Append>
+                <Button className="search-button" variant="outline-secondary">
+                  <FaSearch/>
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </div>
         </div>
 
         <div className="logo-box header-item">
