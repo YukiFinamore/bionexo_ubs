@@ -1,16 +1,11 @@
-import React                                         from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
-// Containers
-import Full                                          from './containers/Full/'
+import React                             from 'react';
+import { Router, Route, browserHistory } from 'react-router';
 
 // Pages
-import Home                                         from './views/Pages/Home/'
+import Home                              from './views/Pages/Home/Home'
 
 export default (
   <Router history={browserHistory}>
-    <Route path="/" component={Full}>
-      <IndexRoute component={Home}/>
-    </Route>
+    <Route exact path="/" component={Home}/>
   </Router>
 );
