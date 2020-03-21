@@ -1,39 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import logo from '../../../logo.svg';
+import Header from '../../../components/Header';
+import UbsCard from '../../../components/UbsCard';
+import GoogleMapReact from 'google-map-react';
+import "./styles.scss";
 
-class Home extends Component {
-  state = {
-    credentials: {
-      login: '',
-      password: ''
-    }
-  }
+const AnyReactComponent = ({ text }) => <div className="marker-item">{text}</div>;
 
-  render() {
-    const submitHandler = this.state.credentials.login && this.state.credentials.password ? this.handleSubmit : this.handleEmptySubmit
-    return (
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card-group mb-0">
-              <div className="card p-2">
-                <div className="card-block">
-                  <h1>Home</h1>
-                </div>
-              </div>
+const Home = () => {
+  const [mapCenter, setMapCenter] = useState('')
 
-              <div className="card card-inverse card-primary py-3 hidden-md-down" style={{ width: 44 + '%' }}>
-                <div className="card-block text-center">
-                  <div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  useEffect(() => {
+    console.log("Banana")
+  });
+
+  return (
+    <div className="App">
+      <Header/>
+
+      <div className="ubs-list-container">
+        <UbsCard/>
       </div>
-    );
-  }
+
+      <div className="map-container">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyAbLNX2SRGGodG0eWxAzp5WeQGRHBD3hk8' }}
+          defaultCenter={{
+        lat: -23.6396288,
+        lng: -46.6353239
+      }}
+          defaultZoom={15}
+        >
+          <AnyReactComponent
+            lat={-23.6396288}
+            lng={-46.6353239}
+            text="My Marker"
+          />
+        </GoogleMapReact>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
