@@ -1,5 +1,6 @@
-export var Constants = {
-  // SERVER_URL: 'https://mcr-reembolso.herokuapp.com/',
-  SERVER_URL: 'http://localhost:3000',
-  API_URL: 'api/v1'
-} 
+const constants = {
+  api: {
+    path: 'http://localhost:3000',
+  },
+}
+export default constants;

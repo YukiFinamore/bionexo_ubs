@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../../../logo.svg';
+import { getHospitals } from '../../../services/api';
 import Header from '../../../components/Header';
 import UbsCard from '../../../components/UbsCard';
 import GoogleMapReact from 'google-map-react';
@@ -9,9 +9,16 @@ const AnyReactComponent = ({ text }) => <div className="marker-item">{text}</div
 
 const Home = () => {
   const [mapCenter, setMapCenter] = useState('')
+  const [hospitals, setHospitals] = useState([])
 
   useEffect(() => {
-    console.log("Banana")
+    getHospitals()
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    });
   });
 
   return (
@@ -26,9 +33,9 @@ const Home = () => {
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAbLNX2SRGGodG0eWxAzp5WeQGRHBD3hk8' }}
           defaultCenter={{
-        lat: -23.6396288,
-        lng: -46.6353239
-      }}
+            lat: -23.6396288,
+            lng: -46.6353239
+          }}
           defaultZoom={15}
         >
           <AnyReactComponent
