@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dropdown, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Dropdown, Button } from 'react-bootstrap';
 import { slide as AsideMenu } from 'react-burger-menu';
 import Truncate from 'react-truncate';
 import { FaUserAlt, FaSearch } from "react-icons/fa";
@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.scss";
 
 const Header = ({showSettings}) => {
-  const [mapCenter, setMapCenter] = useState('')
-
   return (
     <header className="app-header navbar">
       <div className="header-item">
@@ -21,19 +19,9 @@ const Header = ({showSettings}) => {
         </AsideMenu>
 
         <div className="search-box">
-          <InputGroup>
-            <FormControl
-              placeholder="Busca"
-              aria-label="Busca"
-              aria-describedby="basic-addon2"
-            />
-
-            <InputGroup.Append>
-              <Button className="search-button" variant="outline-secondary">
-                <FaSearch/>
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
+          <Button className="search-button" variant="outline-secondary">
+            <FaSearch/>
+          </Button>
         </div>
       </div>
 
