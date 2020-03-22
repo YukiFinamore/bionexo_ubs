@@ -14,12 +14,12 @@ const Home = () => {
   useEffect(() => {
     getHospitals()
     .then(response => {
-      console.log(response.data)
+      setHospitals(response.data)
     })
     .catch((error) => {
       console.log(error)
     });
-  });
+  }, []);
 
   return (
     <div className="App">
@@ -38,11 +38,17 @@ const Home = () => {
           }}
           defaultZoom={15}
         >
-          <AnyReactComponent
-            lat={-23.6396288}
-            lng={-46.6353239}
-            text="My Marker"
-          />
+          {
+            hospitals.length > 0 &&
+            hospitals.map((hospital, index) => 
+              <AnyReactComponent
+                key={index}
+                lat={hospital.geocode.lat}
+                lng={hospital.geocode.long}
+                text={index}
+              />
+            )
+          }
         </GoogleMapReact>
       </div>
     </div>
