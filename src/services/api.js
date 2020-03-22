@@ -8,3 +8,9 @@ export const getHospitals = (mapCenter) => {
     `${API_PATH}/api/v1/find_ubs?query=${mapCenter}`,
   )
 }
+
+export const filterByInput = (term, page) => {
+  return axios.post(
+    `${API_PATH}/api/v1/find_by_term?search=${term}&page=${page}`,
+  )
+}
