@@ -12,14 +12,14 @@ const Home = () => {
   const [hospitals, setHospitals] = useState([])
 
   useEffect(() => {
-    getHospitals()
+    getHospitals(mapCenter)
     .then(response => {
       setHospitals(response.data)
     })
     .catch((error) => {
       console.log(error)
     });
-  }, []);
+  }, [mapCenter]);
 
   return (
     <div className="App">
@@ -31,10 +31,11 @@ const Home = () => {
 
       <div className="map-container">
         <GoogleMapReact
+          onChange={({center}) => setMapCenter(`${center.lat}, ${center.lng}`)}
           bootstrapURLKeys={{ key: 'AIzaSyAbLNX2SRGGodG0eWxAzp5WeQGRHBD3hk8' }}
           defaultCenter={{
-            lat: -23.6396288,
-            lng: -46.6353239
+            lat: -23.5428363,
+            lng: -46.637257
           }}
           defaultZoom={15}
         >
