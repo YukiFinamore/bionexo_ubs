@@ -17,8 +17,10 @@
 }
 
 .ubs-name {
-  color: $turquoise;
-  font-weight: bold;
+  a {
+    color: $turquoise;
+    font-weight: bold;
+  }
 }
 
 .ubs-locale,

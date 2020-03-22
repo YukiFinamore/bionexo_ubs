@@ -59,4 +59,91 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 9999;
+  cursor: pointer;
+  position: relative;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 77%;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-top-color: #282B39;
+    border-bottom: 0;
+    margin-left: -26px;
+    margin-bottom: -8px;
+  }
+
+  .hospital-info {
+    opacity: 0;
+    background: $white;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    min-width: 300px;
+    top: -120px;
+    left: 0px;
+    transition: all .5s;
+    border: solid 2px $turquoise;
+    border-radius: 8px;
+    z-index: 9999;
+
+    &:before {
+      border-left: 23px solid transparent;
+      border-top: 23px solid #a7a7a7;
+      bottom: -26px;
+      content: "";
+      position: absolute;
+      left: 10px;
+      border: 13px solid transparent;
+      border-top-color: $white;
+      z-index: 999;
+    }
+
+    &:after {
+      border-left: 23px solid transparent;
+      border-top: 23px solid #a7a7a7;
+      bottom: -31px;
+      content: "";
+      position: absolute;
+      left: 8px;
+      border: 15px solid transparent;
+      border-top-color: $turquoise;
+    }
+
+    h2 {
+      color: $turquoise;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    p {
+      color: $navy-purple;
+      font-weight: 400;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+  }
+
+  &:hover {
+    background: $turquoise;
+
+    &:after {
+      border-top-color: $turquoise;
+    }
+
+    .hospital-info {
+      opacity: 1;
+      transition: all .5s;
+    }
+  }
 }

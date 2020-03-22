@@ -9,7 +9,20 @@ import UbsCard from '../../../components/UbsCard';
 import GoogleMapReact from 'google-map-react';
 import "./styles.scss";
 
-const AnyReactComponent = ({ text }) => <div className="marker-item">{text}</div>;
+const Marker = ({ index, name, address }) => 
+  <div className="marker-item">
+    {index + 1}
+
+    <div className="hospital-info">
+      <h2>
+        {name}
+      </h2>
+
+      <p>
+        {address}
+      </p>
+    </div>
+  </div>;
 
 const Home = () => {
   const [mapCenter,         setMapCenter]         = useState('-23.5428363, -46.637257')
@@ -103,11 +116,13 @@ const Home = () => {
           {
             hospitals.length > 0 &&
             hospitals.map((hospital, index) => 
-              <AnyReactComponent
+              <Marker
                 key={index}
                 lat={hospital.geocode.lat}
                 lng={hospital.geocode.long}
-                text={index}
+                index={index}
+                name={hospital.name}
+                address={hospital.address}
               />
             )
           }
