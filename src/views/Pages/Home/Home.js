@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { InputGroup, Button } from 'react-bootstrap';
 import { FaSearch } from "react-icons/fa";
-import "intersection-observer";
+import { usePosition } from 'use-position';
 import { ScrollView } from "@cantonjs/react-scroll-view";
 import { getHospitals, filterByInput } from '../../../services/api';
 import Header from '../../../components/Header';
 import UbsCard from '../../../components/UbsCard';
 import GoogleMapReact from 'google-map-react';
+import "intersection-observer";
 import "./styles.scss";
 
 const Marker = ({ index, name, address }) => 
@@ -27,13 +28,18 @@ const Marker = ({ index, name, address }) =>
   </div>;
 
 const Home = () => {
+  const { latitude,         longitude }           = usePosition(true);
+  const [currentLocation,   setCurrentLocation]   = useState('')
   const [mapCenter,         setMapCenter]         = useState('-23.5428363, -46.637257')
-  const [test,              setTest]              = useState({lat: -23.5428363, lng: -46.637257})
+  const [center,            setCenter]            = useState({lat: -23.5428363, lng: -46.637257})
   const [hospitals,         setHospitals]         = useState([])
   const [search,            setSearch]            = useState('')
   const [hospitalsBySearch, setHospitalsBySearch] = useState([])
   const [page,              setPage]              = useState(1)
 
+  useEffect(() => {
+    setCenter({lat: latitude || -23.5428363, lng: longitude || -46.637257})
+  }, [latitude, longitude])
 
   useEffect(() => {
     getHospitals(mapCenter)
@@ -60,8 +66,10 @@ const Home = () => {
   }
 
   const endReached = () => {
-    getListByTerm(page + 1)
-    setPage(page + 1)
+    if (search.length > 3) {
+      getListByTerm(page + 1)
+      setPage(page + 1)
+    }
   };
 
   const onClickSearchByTerm = () => {
@@ -90,7 +98,7 @@ const Home = () => {
       </div>
 
       <ScrollView 
-        onEndReached={search.length > 3 && endReached}
+        onEndReached={endReached}
         className="ubs-list-container"
       >
         {
@@ -102,7 +110,7 @@ const Home = () => {
               address={hospital.address}
               city={hospital.city}
               phone={hospital.phone}
-              onClickHospital={() => setTest({lat: hospital.geocode.lat, lng: hospital.geocode.long})}
+              onClickHospital={() => setCenter({lat: hospital.geocode.lat, lng: hospital.geocode.long})}
             />
           )
         }
@@ -112,8 +120,8 @@ const Home = () => {
         <GoogleMapReact
           onChange={({center}) => setMapCenter(`${center.lat}, ${center.lng}`)}
           bootstrapURLKeys={{ key: 'AIzaSyAbLNX2SRGGodG0eWxAzp5WeQGRHBD3hk8' }}
-          center={test}
-          defaultZoom={13}
+          center={center}
+          defaultZoom={14}
         >
           {
             hospitals.length > 0 &&
