@@ -1,4 +1,4 @@
-# Bionexo Ubs Api
+# Bionexo Ubs
 
 The purpose of project is permit to user find and show all Ubs's around any geolocation based on their position on map, custom position or by filter input. This project get their data on an API created to load these infos.
 
@@ -24,6 +24,7 @@ npm install
 ```
 
 If you got success message, run:
+
 ```
 npm start
 ```
