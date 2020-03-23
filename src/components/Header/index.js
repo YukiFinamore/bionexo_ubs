@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Dropdown, Button } from 'react-bootstrap';
 import { slide as AsideMenu } from 'react-burger-menu';
 import Truncate from 'react-truncate';
@@ -15,7 +15,7 @@ const Header = ({showSettings}) => {
           <a id="about" className="menu-item" href="/about">About</a>
           <a id="contact" className="menu-item" href="/contact">Contact</a>
 
-          <a onClick={ showSettings } className="menu-item--small" href="">Settings</a>
+          <a onClick={ showSettings } className="menu-item--small" href="#!">Settings</a>
         </AsideMenu>
 
         <div className="search-box">
