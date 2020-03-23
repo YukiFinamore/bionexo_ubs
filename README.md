@@ -12,6 +12,8 @@ Clone the project on your directory with this command line:
 git clone git@github.com:YukiFinamore/bionexo_ubs.git
 ```
 
+Config your `src/contants.js` file, by default api.path is `https://bionexo-ubs.herokuapp.com/`, but if you build up your own api [like that](https://github.com/YukiFinamore/bionexo_ubs_api), you change the api.path to your localhost path.
+
 ## Starting with React
 
 This project works with:
