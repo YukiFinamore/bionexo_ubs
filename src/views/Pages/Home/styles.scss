@@ -59,12 +59,16 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 9999;
+  z-index: auto;
   cursor: pointer;
   position: relative;
   border-radius: 8px;
   font-size: 18px;
   font-weight: 500;
+
+  .index-number {
+    position: absolute;
+  }
 
   &:after {
     content: '';
@@ -88,14 +92,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: absolute;
+    position: relative;
     min-width: 300px;
-    top: -120px;
-    left: 0px;
+    top: -95px;
+    left: 125px;
     transition: all .5s;
     border: solid 2px $turquoise;
     border-radius: 8px;
-    z-index: 9999;
+    z-index: -1;
+    display: none;
 
     &:before {
       border-left: 23px solid transparent;
@@ -144,6 +149,8 @@
     .hospital-info {
       opacity: 1;
       transition: all .5s;
+      z-index: 999;
+      display: block;
     }
   }
 }

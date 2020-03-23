@@ -11,7 +11,9 @@ import "./styles.scss";
 
 const Marker = ({ index, name, address }) => 
   <div className="marker-item">
-    {index + 1}
+    <p className="index-number">
+      {index + 1}
+    </p>
 
     <div className="hospital-info">
       <h2>
@@ -26,7 +28,7 @@ const Marker = ({ index, name, address }) =>
 
 const Home = () => {
   const [mapCenter,         setMapCenter]         = useState('-23.5428363, -46.637257')
-  const [test,              setTest]= useState({lat: -23.5428363, lng: -46.637257})
+  const [test,              setTest]              = useState({lat: -23.5428363, lng: -46.637257})
   const [hospitals,         setHospitals]         = useState([])
   const [search,            setSearch]            = useState('')
   const [hospitalsBySearch, setHospitalsBySearch] = useState([])
@@ -111,7 +113,7 @@ const Home = () => {
           onChange={({center}) => setMapCenter(`${center.lat}, ${center.lng}`)}
           bootstrapURLKeys={{ key: 'AIzaSyAbLNX2SRGGodG0eWxAzp5WeQGRHBD3hk8' }}
           center={test}
-          defaultZoom={15}
+          defaultZoom={13}
         >
           {
             hospitals.length > 0 &&
