@@ -15,7 +15,7 @@ git clone git@github.com:YukiFinamore/bionexo_ubs.git
 ## Starting with React
 
 This project works with:
-* Node v10.15.3 [installation guide](https://www.taniarascia.com/how-to-install-and-use-node-js-and-npm-mac-and-windows/)
+* Node v10.15.3 - [installation guide](https://www.taniarascia.com/how-to-install-and-use-node-js-and-npm-mac-and-windows/)
 
 After make sure this prerequisites are installed and configured, inside the directory project, run on your terminal:
 
